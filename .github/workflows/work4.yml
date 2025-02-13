@@ -1,0 +1,20 @@
+name: Count Authors
+
+on:
+  push:
+    paths:
+      - 'authors.txt'
+
+jobs:
+  count-authors:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Count authors
+      run: |
+        echo "Counting authors in authors.txt..."
+        author_count=$(wc -l < authors.txt)
+        echo "Number of authors: $author_count"
